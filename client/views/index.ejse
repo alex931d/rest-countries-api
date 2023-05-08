@@ -16,7 +16,7 @@
               <h1>where in the world?</h1>
               <div class="main-menu-sub-container">
                  <div class="theme-switcher-container">
-                  <img class="switch" alt="">
+                  <img class="switch" src="../imgs/moon-solid.svg" alt="">
                     <span>dark mode</span>
                  </div>
               </div>
