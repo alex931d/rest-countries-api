@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>country search</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" integrity="sha512-yDUXOUWwbHH4ggxueDnC5vJv4tmfySpVdIcN1LksGZi8W8EVZv4uKGrQc0pVf66zS7LDhFJM7Zdeow1sw1/8Jw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<%- include("./partials/lightbox"); %>
+    <header>
+         <div class="main-menu center">
+              <h1>where in the world?</h1>
+              <div class="main-menu-sub-container">
+                 <div class="theme-switcher-container">
+                  <img class="switch" alt="">
+                    <span>dark mode</span>
+                 </div>
+              </div>
+         </div>
+    </header>
+    <% const key = Object.values(countries[0].name.nativeName || {})[0] || undefined %>
+    <% const currency = Object.values(countries[0].currencies || {})[0] || undefined %>
+    <main>
+         <div class="main-content center">
+              <div class="sub-menu">
+                <a href="/" class="back-btn">back</a>
+              </div>
+              <div class="card-container country"> 
+                 <div class="country-first">
+                  
+                    <div class="country-image" style="background-image: url(<%- countries[0].flags.svg %>)">
+                      <div class="country-image-hover">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"/></svg>
+                      </div>
+                    </div>
+                 </div>
+                 <div class="country-last">
+                    <div class="country-last-wrapper">
+                        <h2><%- countries[0].name.common %></h2>
+                     <div class="sub-info-container">
+                         <div class="sub-info-column">
+                          <div class="card-row">
+                            <span class="main-text">native name:</span>
+                            <% if (key === undefined) { %>
+                                <span><%- countries[0].name.common %></span>
+                            <% } else { %>
+                                <span><%- key.common %></span>
+                            <% } %>
+                        </div>
+                              <div class="card-row">
+                                <span class="main-text">population:</span>
+                                <span><%- countries[0].population %></span>
+                              </div>
+                              <div class="card-row">
+                                <span class="main-text">region:</span>
+                                <span><%- countries[0].region %></span>
+                              </div>
+                              <div class="card-row">
+                                <span class="main-text">sub region:</span>
+                                <span><%- countries[0].subregion %></span>
+                              </div>
+                              <div class="card-row">
+                                <span class="main-text">capital:</span>
+                                <span><%- countries[0].capital %></span>
+                              </div>
+                         </div>
+                         <div class="sub-info-column">
+                            <div class="card-row">
+                                <span class="main-text">area:</span>
+                                <span><%- countries[0].area%>></span>
+                              </div>
+                              <div class="card-row">
+                                <span class="main-text">languages:</span>
+                                <% if (countries[0].languages) { %>
+                                  <span><%- Object.values(countries[0].languages) %></span>
+                                <% } else { %>
+                                  <span>No languages available</span>
+                                <% } %>
+                              </div>
+                              <% if (countries && countries.length > 0) { %>
+                                <div class="card-row">
+                                  <span class="main-text">name:</span>
+                                  <% if (countries[0].name && countries[0].name.common) { %>
+                                    <span><%- countries[0].name.common %></span>
+                                  <% } else { %>
+                                    <span>No name available</span>
+                                  <% } %>
+                                </div>
+                              <% } else { %>
+                                <div>No country data available</div>
+                              <% } %>
+                         </div>
+                        
+                     </div>
+                    </div>
+                     
+                      <div class="sub-info-borders-container">
+                        <% if (countries[0].borders != undefined) { %>
+                                 <span class="side-text">border countries</span> 
+                              <% countries[0].borders.forEach(border => {    %>
+                            <div class="border-country-box">
+                                    <span><%- border %></span>
+                            </div>     
+                            <%   }); %>
+                         <%   } else { %>
+                       <span class="side-text">this country has no borders</span>
+                        <% } %>
+                     
+                         </div>
+                 </div>
+              </div>
+         </div>
+    </main>
+    <script src="../scripts/themeswitcher.js"></script>
+    <script src="../scripts/lightbox.js"></script>
+</body>
+</html>

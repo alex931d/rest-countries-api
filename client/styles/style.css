@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css");
+
+:root{
+--border-radius: 7px;
+
+}
+/* theme switcher */
+body, body[data-theme="light"] {
+    --background-color: hsl(0, 0%, 98%);
+    --secound-color: hsl(0, 0%, 100%);
+    --border-color: hsl(0, 0%, 52%);
+    --text-color:hsl(207, 26%, 17%);
+    --icon-color:  invert(0%) sepia(96%) saturate(0%) hue-rotate(156deg) brightness(112%) contrast(100%);
+}
+body[data-theme="dark"] {
+    --background-color: hsl(207, 26%, 17%);
+    --secound-color: hsl(209, 23%, 22%);
+    --border-color: hsl(200, 15%, 8%);
+    --text-color:hsl(0, 0%, 100%);
+    --icon-color:   invert(100%) sepia(0%) saturate(7500%) hue-rotate(328deg) brightness(110%) contrast(104%);
+}
+/* -------------------- */
+*,*::after,*::before{
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+.icon{
+    width: 17.5px;
+    fill: var(--text-color);
+}
+body{
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+}
+span,h1,h2,h3,h4,h5{
+    color: var(--text-color);
+}
+.switch{
+    width: 17.5px;
+    filter:var(--icon-color);
+}
+header{
+    width: 100%;
+    min-height: 40px;
+    background-color: var(--secound-color);
+  
+}
+.center{
+    margin: 0 auto;
+    max-width: 1480px;
+}
+.main-menu{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    background-color: var(--secound-color);
+     border-bottom: 2px solid  var(--border-color);
+}
+.main-menu-sub-container{
+    display: flex;
+}
+.theme-switcher-container{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.theme-switcher-container span{
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+main{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+.main-content{
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.sub-menu{
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search-bar{
+    max-width: 500px;
+    min-width: 450px;
+    border-radius: 10px;
+    height: 50px;
+    box-shadow: 0px 9px 20px -20px rgba(0,0,0,0.75);
+}
+.search-form{
+    width: 100%;
+    height: 100%;
+    background-color: var(--secound-color);
+    display: flex;
+    align-items: center;
+}
+.search-form input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--secound-color);
+}
+.search-form input:focus{
+    outline: none;
+}
+.search-form input::placeholder{
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+.search-form input:focus{
+    color: var(--text-color);
+}
+.search-form-icon{
+    width: 70px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filter-container{
+    height: auto;
+    min-width: 230px;
+    flex-direction: column;
+    display: flex;
+    gap: 10px;  
+    position: relative;
+}
+.filter-select{
+  width: 100%;
+  height: 50px;
+  border-radius: var(--border-radius);
+ align-items: center;
+  background-color: var(--secound-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  text-transform: capitalize;
+  font-weight: 600;
+  cursor: pointer;
+}
+.filter-select.active ~ .select-menu{
+    display: flex !important;
+}
+@keyframes fadeIn{
+    0%{
+      opacity: 0.4;
+    }
+    100%{
+    opacity: 1;
+    }
+}
+.select-menu{
+    position: absolute;
+    animation-name: fadeIn;
+    animation-duration: 0.7s;
+    top: calc(100% + 5px);
+    background-color: var(--secound-color);
+    width: 100%;
+    z-index: 1;
+    border-radius: var(--border-radius);
+    flex-direction: column;  
+     display: none;
+      box-shadow: 0px 9px 20px -20px rgba(0,0,0,0.75);
+
+}
+.select-item{
+    width: 100%;
+    padding: 20px;
+  padding-bottom: 0px;
+  text-transform: capitalize;
+  font-weight: 600;
+  cursor: pointer;
+}
+.select-item:last-child{
+    padding-bottom: 20px;
+}
+.card-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 40px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+@keyframes blurOut {
+    0%{
+     filter: blur(10px);
+    }
+    100%{
+filter: blur(0);
+    }
+}
+.card{
+    min-height: 380px;
+    min-width: 260px;
+    max-width: 300px;
+    width: 25%;
+    cursor: pointer;
+    flex: max-content;
+    background-color: var(--secound-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+    flex-direction: column;
+}
+
+.card:hover{
+    transform: translateY(-15px) !important;
+}
+.card:hover .card-image{
+    filter: brightness(120%);
+}
+.card-image{
+    width: 100%;
+    animation-name: blurOut;
+    animation-duration: 2.5s;
+    transition: all 0.4s ease-in-out;
+    flex: auto;
+    border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+    height: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../imgs/indien-flag.webp");
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 50%;
+    width: 100%;
+    padding: 30px;
+}
+.title{
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+}
+.card-sub-container{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+.main-text{
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.card-row span:last-child{
+    text-transform: capitalize;
+}
+
+@media screen and (max-width: 760px) {
+   .sub-menu{
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+   }
+
+   .search-bar{
+    width: 100%;
+    max-width: none;
+    min-width: 100px;
+   }
+   .main-menu h1{
+    font-size: 1.6rem;
+   }
+   .theme-switcher-container span{
+    font-size: 1rem;
+   }
+   .icon{
+    width: 14px;
+   }
+   .card-container{
+    flex-direction: row;
+    justify-content: space-evenly
+   }
+   .card{
+    width: 50%;
+    flex: max-content;
+    max-width: none;
+   }
+  }
+  @media screen and (max-width: 430px) {
+   .theme-switcher-container span{
+    display: none;
+   }
+   .theme-switcher-container svg{
+    width: 16px;
+   }
+  }
+
+
+  /* country.ejs page styling */
+
+ .card-container.country{
+  flex-direction: row;
+  display: flex;    
+  min-height: 400px;
+gap: 70px;
+justify-content: center;
+ }
+ .country-first{
+    width: 50%;
+    height: auto;
+ }
+ .country-image{
+    background-image: url(../imgs/indien-flag.webp);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    flex: max-content;
+    max-width: 660px;
+    position: relative;
+ }
+ .country-image-hover{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+   padding: 20px;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+ }
+ .country-image:hover .country-image-hover{
+    display: flex;
+    opacity: 1;
+ }
+
+.country-image::before{
+    background: linear-gradient(180deg,rgba(0,22,43,0),rgba(0,22,43,.38) 44%,var(--background-color));
+    content: "";
+    height: 50%;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+ .country-image-hover svg{
+    width: 25px;
+ }
+ .country-last{
+    height: auto;
+    display: flex;
+    flex: max-content;
+    flex-direction: column;
+    justify-content: space-around;
+ }
+ .country-last h2{
+    font-size: 2.2rem;
+    text-transform: capitalize;
+ }
+ .country-last-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ }
+ .sub-info-container{
+    display: flex;
+    justify-content: space-between;
+ }
+ .sub-info-borders-container{
+    display: flex;
+    gap: 20px; 
+      height: auto;
+      flex-wrap: wrap;
+    align-items: center;
+    max-width: 500px;
+ }
+ .sub-info-borders-container .side-text{
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+ }
+ .sub-info-column{
+    gap: 11px;
+    display: flex;
+    flex-direction: column;
+ }
+ .border-country-box{
+    width: 130px;
+    height: auto;
+    padding: 5px;
+    display: flex;
+   border-radius: 3px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secound-color);   
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.128);
+ }
+ .border-country-box span{
+    text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 600;
+ }
+ .back-btn{
+    height: auto;
+     padding: 5px;
+     min-width: 140px;
+     display: flex;
+     align-items: center;
+     color: var(--text-color);
+     justify-content: center;
+     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.128);
+    background-color: var(--secound-color);
+    text-transform: capitalize;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1.1rem;
+ }
+ @media screen and (max-width: 830px) {
+   .card-container  .country-first{
+    width: 100%;
+  }
+ .card-container .country-image{
+    max-width: none;
+     height: 350px;
+  }
+}
+@media screen and (max-width: 600px) {
+   .sub-info-container{
+    gap: 20px;
+    flex-direction: column;
+}
+ }
+ /*modal styling*/
+ dialog{
+    width: 50%;
+    height: 50%;
+    left: calc(50% / 2);
+    padding: 10px;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    top: calc(20% / 2);
+    gap: 15px;
+    border: none;
+    display: none !important;
+    background-color: transparent;
+}
+.dialog:modal{
+    display: none;
+}
+dialog[open]{
+    display: flex !important;
+}
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.769);
+}
+.lightbox-image{
+width: 100%;
+height: 100%;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+.image-container{
+    width: 100%;
+    height: 100%;
+}

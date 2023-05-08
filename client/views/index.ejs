@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>country search</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js"></script> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" integrity="sha512-yDUXOUWwbHH4ggxueDnC5vJv4tmfySpVdIcN1LksGZi8W8EVZv4uKGrQc0pVf66zS7LDhFJM7Zdeow1sw1/8Jw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+         <div class="main-menu center">
+              <h1>where in the world?</h1>
+              <div class="main-menu-sub-container">
+                 <div class="theme-switcher-container">
+                  <img class="switch" alt="">
+                    <span>dark mode</span>
+                 </div>
+              </div>
+         </div>
+    </header>
+    <main>
+         <div class="main-content center">
+              <div class="sub-menu">
+                   <div class="search-bar">
+                      <form class="search-form" method="POST" action="/country">
+                        <div class="search-form-icon">
+                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                        </div>
+                           <input type="text" placeholder="Search for a country..." name="country">
+                      </form>
+                   </div>
+                   <div class="filter-container">
+                        <div class="filter-select">
+                             <span class="filter">filter by region</span>
+                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+                        </div>
+                        <div class="select-menu">
+                             <div class="select-item">
+                                <span>Africa</span>
+                             </div>
+                             <div class="select-item">
+                                <span>Asia</span>
+                             </div>
+                             <div class="select-item">
+                              <span>Americas</span>
+                           </div>
+                           <div class="select-item">
+                              <span>Europe</span>
+                           </div>
+                           <div class="select-item">
+                              <span>Oceania</span>
+                           </div>
+                        </div>
+                   </div>
+              </div>
+              <div class="card-container">
+               <% countries.forEach(country => { %>
+                    <% const population = country.population.toString().replace(/[^0-9]/g, 's'); %>
+                    <div class="card">
+                      <div class="card-image" style="background-image: url(<%- country.flags.svg %>)"></div>
+                      <div class="card-content">
+                        <% if (country.name.common == undefined) { %>
+                           <span class="title"><%- country.name %></span>
+                        <% } else{ %>
+                           <span class="title"><%- country.name.common %></span>
+                      <%  } %>
+                        
+                        <div class="card-sub-container">
+                          <div class="card-row">
+                            <span class="main-text">population:</span>
+                            <span><%- population.replace(/\B(?=(\d{3})+(?!\d))/g, ',') %></span>
+                          </div>
+                          <div class="card-row">
+                            <span class="main-text">region:</span>
+                            <span><%- country.region %></span>
+                          </div>
+                          <div class="card-row">
+                            <span class="main-text">capital:</span>
+                            <span><%- country.capital %></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% }); %>
+             
+              </div>
+         </div>
+    </main>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/themeswitcher.js"></script>
+</body>
+</html>
