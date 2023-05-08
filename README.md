@@ -1,42 +1,49 @@
-Frontend Mentor - Tic Tac Toe solution
-This is a solution to the Tic Tac Toe challenge on Frontend Mentor. Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+# Frontend Mentor - REST Countries api
 
-Table of contents
-Overview
-The challenge
-Screenshot
-Links
-My process
-Built with
-What I learned
-Continued development
-Author
-Acknowledgments
-Overview
-The challenge
+This is a solution to the REST Countries API challenge on Frontend Mentor. Frontend Mentor challenges help you improve your coding skills by building frontend projects.
+
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+### The challenge
+
 Users should be able to:
 
-View the optimal layout for the game depending on their device's screen size
-See hover states for all interactive elements on the page
-Play the game either solo vs the computer or multiplayer against another person
-Bonus 1: Save the game state in the browser so that it’s preserved if the player refreshes their browser
-Bonus 2: Instead of having the computer randomly make their moves, try making it clever so it’s proactive in blocking your moves and trying to win
-Screenshot
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode *(optional)*
 
+### Screenshot
 
-Links
-Live Site URL: Live Site
-My process
-I began with the building out the logic and basic gameplay before any type of styling occured. Setting up the board and registering the click events was a bit challenging at first but once I grasped the use of a multi-dimensonal array and using x and y coordinates as my selectors everything feel in place afterwards.
+![](https://i.ibb.co/y5GtnLG/awrrawawr.png)
 
-Built with
-Flexbox
-Mobile-first workflow
-React - JS library
-What I learned
-This was a great projec to tackle after I followed a course on uDemy about functional components in React. Previous projects that I have developed in React were using class components and needed to learn functional components to bring myself up to speed with the industry. This project was great for learning how to pass around states into different components and using functions to set styling.
+### Links
 
-I was really challenged with styling the selected squares that were part of the win condition. It took me a minute to figure out how to get the background and svg image styled correctly with the right conditional logic to only be applied to the winning squares.
+- Live Site URL: [rest countries api](https://rest-countries-api.herokuapp.com/)
 
-Continued development
-I'm going to focus on refactoring this project using useContext and useEffect to help condense some of the code and assist in passing around the states. I feel this is much to learn about these React items.
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- [Ejs](https://ejs.co/) - JS template library
+- [Express](https://expressjs.com/) - node.js framework
+- [Gsap](https://greensock.com/) - For animations
+
+### What I learned
+i think one of the most major things i learned in this small frontend project 
+was working with ejs and express. i've had working with API's before so that was no problem for me however one of the hardest parts was error handling and working with ejs since i didn't have much experience with it.
+
+### Continued development
+
+wrtting better code struture and maybe work on adding more features on the project and more animations
